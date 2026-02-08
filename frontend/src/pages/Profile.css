@@ -1,0 +1,99 @@
+.profile-screen {
+  padding: 72px 16px 90px;
+}
+
+/* ===== USER HEADER ===== */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.profile-header p {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* ===== TABS ===== */
+.profile-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  justify-content: center;
+}
+
+.profile-tabs button {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.profile-tabs button.active {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+/* ===== FRIEND LIST ===== */
+.friend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.friend-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.friend-left img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.friend-left h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.friend-left span {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* ACTION BUTTON */
+.friend-action {
+  padding: 6px 14px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}

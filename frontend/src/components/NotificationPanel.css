@@ -1,0 +1,52 @@
+.notif-overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 500;
+}
+
+.notif-panel {
+  position: absolute;
+  top: 64px;
+  right: 12px;
+  width: 90%;
+  max-width: 360px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+  padding: 14px;
+}
+
+.notif-panel h3 {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.notif-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.notif-item:last-child {
+  border-bottom: none;
+}
+
+.notif-item strong {
+  font-size: 0.85rem;
+}
+
+.notif-item p {
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+.notif-item span {
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.empty {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
