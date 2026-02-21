@@ -1,78 +1,76 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Login.css";
 
-const SignupForm = () => {
+const Register = () => {
   const [name, setName] = useState("");
+  const [roll, setRoll] = useState("");
+  const [branch, setBranch] = useState("");
+  const [batch, setBatch] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-
-    if (!name || !email || !password) {
-      setError("All fields are required");
-      return;
-    }
-
-    // TODO: Call signup API
-  };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2 className="title">Create your SafeCampus account</h2>
-        <p className="subtitle">Stay connected. Stay safe.</p>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h1 className="auth-logo">Create Account</h1>
+        <p className="auth-subtitle">
+          Join NITW SafeCampus community
+        </p>
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              className="input"
-              placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
+        <form>
+          <input
+            className="auth-input"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-          <div className="form-group">
-            <input
-              type="email"
-              className="input"
-              placeholder="University Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+          <input
+            className="auth-input"
+            placeholder="Roll Number"
+            value={roll}
+            onChange={(e) => setRoll(e.target.value)}
+          />
 
-          <div className="form-group">
-            <input
-              type="password"
-              className="input"
-              placeholder="Create Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+          <input
+            className="auth-input"
+            placeholder="Branch"
+            value={branch}
+            onChange={(e) => setBranch(e.target.value)}
+          />
 
-          {error && (
-            <p style={{ color: "#dc2626", fontSize: "0.9rem", marginBottom: "0.5rem" }}>
-              {error}
-            </p>
-          )}
+          <input
+            className="auth-input"
+            placeholder="Batch (2020-2024)"
+            value={batch}
+            onChange={(e) => setBatch(e.target.value)}
+          />
 
-          <button type="submit" className="btn btn-primary">
+          <input
+            type="email"
+            className="auth-input"
+            placeholder="University Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <input
+            type="password"
+            className="auth-input"
+            placeholder="Create Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button className="auth-btn">
             Create Account
           </button>
         </form>
 
-        <p style={{ marginTop: "1rem", textAlign: "center" }}>
-          Already have an account?{" "}
-          <Link to="/" className="link">
+        <p className="auth-footer">
+          Already registered?{" "}
+          <Link to="/" className="auth-link">
             Sign in
           </Link>
         </p>
@@ -81,4 +79,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default Register;

@@ -1,0 +1,128 @@
+.walk-container {
+  position: relative;
+  height: calc(100vh - 56px - 70px);
+  margin-top: 56px;
+}
+
+.walk-map {
+  height: 100%;
+  width: 100%;
+}
+
+.walk-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 420px;
+  background: white;
+  padding: 18px;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  z-index: 1000;
+}
+
+.walk-input {
+  width: 80px;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.btn-primary {
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 14px;
+  border: none;
+  width: 100%;
+}
+
+.btn-success {
+  background: #16a34a;
+  color: white;
+  padding: 10px;
+  border-radius: 14px;
+  border: none;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: white;
+  padding: 10px;
+  border-radius: 14px;
+  border: none;
+  width: 100%;
+}
+
+.timer-chip {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.expired-alert {
+  margin-top: 10px;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.hint-text {
+  font-size: 0.75rem;
+  color: gray;
+}
+
+.distance-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.eta-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2563eb;
+}
+
+.disabled-btn {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Pulsing Dot */
+.pulse-dot {
+  width: 18px;
+  height: 18px;
+  background: #2563EB;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  background: rgba(37, 99, 235, 0.4);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -65,7 +65,7 @@ const Profile = () => {
         >
           Add friends
         </button>
-        <button disabled>Category</button>
+        {/* <button disabled>Category</button> */}
       </div>
 
       {/* FRIEND LIST */}

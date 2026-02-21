@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../auth/AuthContext";
+import "./Login.css";
 
 const Login = () => {
   const [searchParams] = useSearchParams();
@@ -39,51 +40,43 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2 className="title">SafeCampus</h2>
-        <p className="subtitle">
-          Login to access campus safety features
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h1 className="auth-logo">NITW SafeCampus</h1>
+        <p className="auth-subtitle">
+          Access campus safety features securely
         </p>
 
         <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <input
-              type="email"
-              className="input"
-              placeholder="University Email"
-              value={email}
-              onChange={(e) => !emailFromQuery && setEmail(e.target.value)}
-              readOnly={!!emailFromQuery}
-              required
-            />
-          </div>
+          <input
+            type="email"
+            className="auth-input"
+            placeholder="University Email"
+            value={email}
+            onChange={(e) => !emailFromQuery && setEmail(e.target.value)}
+            readOnly={!!emailFromQuery}
+            required
+          />
 
-          <div className="form-group">
-            <input
-              type="password"
-              className="input"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+          <input
+            type="password"
+            className="auth-input"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-          {error && (
-            <p style={{ color: "#dc2626", fontSize: "0.9rem", marginBottom: "0.5rem" }}>
-              {error}
-            </p>
-          )}
+          {error && <p className="auth-error">{error}</p>}
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="auth-btn">
             Login
           </button>
         </form>
 
-        <p style={{ marginTop: "1rem", textAlign: "center" }}>
-          New user?{" "}
-          <Link to="/signup" className="link">
+        <p className="auth-footer">
+          New here?{" "}
+          <Link to="/signup" className="auth-link">
             Create account
           </Link>
         </p>
