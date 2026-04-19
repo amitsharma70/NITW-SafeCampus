@@ -55,6 +55,25 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+// Add this right after app.use(express.json())
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  const allowedOrigins = ["https://nitw-safecampus.netlify.app", "http://localhost:5173"];
+  
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+
+  // Handle the Preflight (OPTIONS) request specifically
+  if (req.method === "OPTIONS") {
+    return res.status(200).json({});
+  }
+  next();
+});
 
 // 4. Test Route
 app.get("/", (req, res) => {
