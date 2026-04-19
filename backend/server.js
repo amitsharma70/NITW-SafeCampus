@@ -8,72 +8,35 @@ const app = express();
 // 1. Connect Database
 connectDB();
 
-// 2. CORS Configuration
-// We define allowed origins explicitly to avoid Preflight errors.
+// 2. Define Allowed Origins
 const allowedOrigins = [
   "https://nitw-safecampus.netlify.app",
-  "http://localhost:5173" // For your local development
+  "http://localhost:5173"
 ];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-  optionsSuccessStatus: 200
-};
-
-app.use(cors({
-  origin: "*", // Allow EVERYTHING temporarily to test
-  credentials: true
-}));
-
-// 3. Manual Header Injection (The "Safety Net")
-// This ensures that even if a route fails, the CORS headers are sent.
+// 3. Robust CORS & Preflight Middleware
+// This replaces the need for the 'cors' library middleware and handles everything manually
 app.use((req, res, next) => {
   const origin = req.headers.origin;
+
+  // If the request origin is in our allowed list, set the header
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
+
+  // Required headers for production cookies/auth and preflight
   res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  
-  // Handle preflight OPTIONS requests immediately
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-  next();
-});
-
-app.use(express.json());
-// Add this right after app.use(express.json())
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  const allowedOrigins = ["https://nitw-safecampus.netlify.app", "http://localhost:5173"];
-  
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-  
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
 
-  // Handle the Preflight (OPTIONS) request specifically
+  // Handle the Preflight (OPTIONS) request specifically and immediately
   if (req.method === "OPTIONS") {
     return res.status(200).json({});
   }
   next();
 });
+
+app.use(express.json());
 
 // 4. Test Route
 app.get("/", (req, res) => {
@@ -97,8 +60,7 @@ try {
     console.error("Failed to start Walk Expiry Job:", error);
 }
 
-// 7. Render/Production Port Binding
-// We listen on '0.0.0.0' to allow Render's network to discover the app.
+// 7. Render Port Binding
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
