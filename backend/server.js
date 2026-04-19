@@ -10,10 +10,13 @@ connectDB();
 
 // Middleware
 // TIP: You can use an array if you want to keep localhost working too
-app.use(cors({ 
-  origin: ["http://localhost:5173", "https://your-app-name.netlify.app"], 
-  credentials: true 
-}));
+app.use(cors({
+  origin: "https://nitw-safecampus.netlify.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+  optionsSuccessStatus: 200 // Essential for some browsers to pass the preflight
+}))
+app.options('*', cors());
 
 app.use(express.json());
 
