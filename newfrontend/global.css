@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ===== LIGHT THEME (default) ===== */
+:root,
+[data-theme="light"] {
+  --bg-primary: #f5f5f0;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #fafaf8;
+  --bg-overlay: rgba(245, 245, 240, 0.92);
+
+  --text-primary: #0d0d0d;
+  --text-secondary: #5a5a5a;
+  --text-muted: #9a9a9a;
+
+  --border-color: #e8e8e2;
+  --border-strong: #d0d0c8;
+
+  --accent: #1a1a1a;
+  --accent-soft: rgba(26, 26, 26, 0.08);
+  --accent-blue: #2563eb;
+  --accent-red: #dc2626;
+  --accent-green: #16a34a;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.09);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.12);
+
+  --nav-bg: rgba(255, 255, 255, 0.88);
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --input-bg: #f8f8f5;
+
+  --toggle-bg: #e8e8e2;
+  --toggle-thumb: #1a1a1a;
+}
+
+/* ===== DARK THEME ===== */
+[data-theme="dark"] {
+  --bg-primary: #0e0e10;
+  --bg-secondary: #18181c;
+  --bg-card: #1e1e24;
+  --bg-elevated: #242428;
+  --bg-overlay: rgba(14, 14, 16, 0.92);
+
+  --text-primary: #f0f0ec;
+  --text-secondary: #a0a0a8;
+  --text-muted: #606068;
+
+  --border-color: #2a2a32;
+  --border-strong: #38383e;
+
+  --accent: #f0f0ec;
+  --accent-soft: rgba(240, 240, 236, 0.08);
+  --accent-blue: #4d8bff;
+  --accent-red: #f87171;
+  --accent-green: #4ade80;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.6);
+
+  --nav-bg: rgba(18, 18, 22, 0.92);
+  --header-bg: rgba(14, 14, 16, 0.92);
+  --input-bg: #242428;
+
+  --toggle-bg: #3a3a42;
+  --toggle-thumb: #f0f0ec;
+}
+
+/* ===== BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--toggle-bg);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--toggle-thumb);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle::after {
+  transform: translateX(18px);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}

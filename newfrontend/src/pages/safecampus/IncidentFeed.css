@@ -1,0 +1,49 @@
+.feed-container {
+  padding: 72px 16px 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* CARD */
+.feed-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* IMAGE — fixed height, consistent */
+.feed-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* TEXT */
+.feed-text {
+  padding: 14px 16px 8px;
+}
+
+.feed-text h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.feed-text p {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* VOTES */
+.feed-votes {
+  padding: 10px 16px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}

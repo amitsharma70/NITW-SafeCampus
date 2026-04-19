@@ -1,99 +1,132 @@
 .profile-screen {
   padding: 72px 16px 90px;
+  background: var(--bg-primary);
+  min-height: 100vh;
+  transition: background 0.3s ease;
 }
 
-/* ===== USER HEADER ===== */
 .profile-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 24px;
+  padding: 24px 20px;
+  background: var(--bg-card);
+  border-radius: 22px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .profile-avatar {
-  width: 90px;
-  height: 90px;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  border: 3px solid var(--border-color);
 }
 
 .profile-header h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Sora', system-ui, sans-serif;
 }
 
 .profile-header p {
-  font-size: 0.85rem;
-  color: #6b7280;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 2px;
 }
 
-/* ===== TABS ===== */
 .profile-tabs {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-bottom: 18px;
-  justify-content: center;
+  padding: 4px;
+  background: var(--bg-elevated);
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  transition: background 0.3s ease;
 }
 
 .profile-tabs button {
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 1px solid #e5e7eb;
-  background: white;
-  font-size: 0.8rem;
+  flex: 1;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  font-family: 'DM Sans', system-ui, sans-serif;
 }
 
 .profile-tabs button.active {
-  background: black;
-  color: white;
-  border-color: black;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
 }
 
-/* ===== FRIEND LIST ===== */
 .friend-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .friend-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .friend-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .friend-left img {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--border-color);
 }
 
 .friend-left h4 {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Sora', system-ui, sans-serif;
 }
 
 .friend-left span {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--text-muted);
+  margin-top: 1px;
+  display: block;
 }
 
-/* ACTION BUTTON */
 .friend-action {
-  padding: 6px 14px;
-  background: black;
-  color: white;
+  padding: 7px 16px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
   border: none;
-  border-radius: 16px;
+  border-radius: 20px;
   font-size: 0.75rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: opacity 0.2s ease;
 }
+
+.friend-action:hover { opacity: 0.8; }

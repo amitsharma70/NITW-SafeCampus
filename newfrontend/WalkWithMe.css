@@ -1,0 +1,184 @@
+.walk-container {
+  position: relative;
+  height: calc(100vh - 58px - 68px);
+  margin-top: 58px;
+}
+
+.walk-map {
+  height: 100%;
+  width: 100%;
+}
+
+.walk-overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 420px;
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  z-index: 1000;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.walk-overlay h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  font-family: 'Sora', system-ui, sans-serif;
+  letter-spacing: -0.2px;
+}
+
+.walk-overlay > p,
+.walk-overlay .hint-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.walk-input {
+  width: 80px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  text-align: center;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.3s ease;
+}
+
+.walk-input:focus {
+  border-color: var(--accent-blue);
+}
+
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Sora', system-ui, sans-serif;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-success {
+  background: var(--accent-green);
+  color: white;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-family: 'Sora', system-ui, sans-serif;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.btn-success:hover {
+  opacity: 0.88;
+}
+
+.btn-success:active {
+  transform: scale(0.98);
+}
+
+.btn-danger {
+  background: var(--accent-red);
+  color: white;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Sora', system-ui, sans-serif;
+}
+
+.timer-chip {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  font-family: 'Sora', system-ui, sans-serif;
+  letter-spacing: -1px;
+}
+
+.expired-alert {
+  margin-top: 10px;
+  color: var(--accent-red);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.distance-text,
+.eta-text {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.eta-text {
+  color: var(--accent-blue);
+}
+
+/* Pulsing Dot */
+.pulse-dot {
+  width: 18px;
+  height: 18px;
+  background: #2563eb;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  background: rgba(37, 99, 235, 0.35);
+  border-radius: 50%;
+  animation: pulse 1.6s infinite;
+  top: 0;
+  left: 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(2.6); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Dark tile layer hint */
+[data-theme="dark"] .walk-map .leaflet-tile {
+  filter: brightness(0.75) invert(1) hue-rotate(200deg) saturate(0.6);
+}

@@ -1,0 +1,63 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-card {
+  width: 92%;
+  max-width: 420px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* CLEAR GAP for close */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* IMAGE */
+.modal-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* CONTENT */
+.modal-content {
+  padding: 16px;
+}
+
+.modal-content h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.modal-content p {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* VOTES */
+.modal-votes {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  color: #6b7280;
+}

@@ -1,82 +1,120 @@
-/* ===== MOBILE SOS UI ===== */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-.phone-frame {
-  width: 100%;
-  max-width: 380px;
-  background: linear-gradient(180deg, #e9ecf5, #dfe7ff);
-  border-radius: 32px;
-  padding: 1.2rem;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+/* ===== LIGHT THEME ===== */
+:root,
+[data-theme="light"] {
+  --bg-primary: #f5f5f0;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #fafaf8;
+
+  --text-primary: #0d0d0d;
+  --text-secondary: #5a5a5a;
+  --text-muted: #9a9a9a;
+
+  --border-color: #e8e8e2;
+  --border-strong: #d0d0c8;
+
+  --accent: #1a1a1a;
+  --accent-soft: rgba(26, 26, 26, 0.08);
+  --accent-blue: #2563eb;
+  --accent-red: #dc2626;
+  --accent-green: #16a34a;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.09);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.12);
+
+  --nav-bg: rgba(255, 255, 255, 0.88);
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --input-bg: #f8f8f5;
+
+  --toggle-bg: #e8e8e2;
+  --toggle-thumb: #1a1a1a;
 }
 
-.sos-card {
-  background: white;
-  border-radius: 28px;
-  padding: 2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
+/* ===== DARK THEME ===== */
+[data-theme="dark"] {
+  --bg-primary: #0e0e10;
+  --bg-secondary: #18181c;
+  --bg-card: #1e1e24;
+  --bg-elevated: #242428;
+
+  --text-primary: #f0f0ec;
+  --text-secondary: #a0a0a8;
+  --text-muted: #606068;
+
+  --border-color: #2a2a32;
+  --border-strong: #38383e;
+
+  --accent: #f0f0ec;
+  --accent-soft: rgba(240, 240, 236, 0.08);
+  --accent-blue: #4d8bff;
+  --accent-red: #f87171;
+  --accent-green: #4ade80;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.6);
+
+  --nav-bg: rgba(18, 18, 22, 0.92);
+  --header-bg: rgba(14, 14, 16, 0.92);
+  --input-bg: #242428;
+
+  --toggle-bg: #3a3a42;
+  --toggle-thumb: #f0f0ec;
 }
 
-.emergency-label {
-  font-size: 0.85rem;
-  color: #6b7280;
-  letter-spacing: 0.05em;
+/* ===== BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.emergency-number {
-  background: #111827;
-  color: white;
-  padding: 0.6rem 1.5rem;
-  border-radius: 14px;
-  font-size: 1.4rem;
-  font-weight: 600;
+html {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
-.sos-button {
-  width: 160px;
-  height: 160px;
-  border-radius: 28px;
-  background: linear-gradient(180deg, #ff4d4d, #dc2626);
-  color: white;
-  font-size: 2rem;
-  font-weight: 700;
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--toggle-bg);
   border: none;
-  box-shadow: 0 15px 30px rgba(220,38,38,0.5);
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
 }
 
-.sos-button:active {
-  transform: scale(0.96);
-  box-shadow: 0 8px 16px rgba(220,38,38,0.6);
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--toggle-thumb);
+  transition: transform 0.3s ease;
 }
 
-.sos-status {
-  font-size: 0.9rem;
-  color: #374151;
+[data-theme="dark"] .theme-toggle::after {
+  transform: translateX(18px);
 }
 
-.quick-actions {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1.2rem;
-}
-
-.quick-card {
-  background: white;
-  border-radius: 20px;
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.9rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-/* Responsive */
-@media (min-width: 768px) {
-  .phone-frame {
-    transform: scale(1.05);
-  }
-}
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }

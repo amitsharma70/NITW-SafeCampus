@@ -3,40 +3,61 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 56px;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  height: 58px;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
-  justify-content: center; /* centers title */
+  justify-content: center;
   z-index: 200;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: 'Sora', system-ui, sans-serif;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-/* Logo pinned to left */
-.app-logo {
+.app-header-left {
   position: absolute;
   left: 16px;
-  width: 28px;
-  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+/* ... existing .app-logo styles ... */
+
+.app-logo {
+  width: 30px;
+  height: 30px;
   object-fit: contain;
+  /* Smooth transition when the filter applies */
+  transition: filter 0.3s ease;
 }
 
-/* Centered app name */
+/* Target the logo when the theme is dark. 
+   Note: This assumes your ThemeContext adds a '.dark' class 
+   or 'data-theme="dark"' to the body or a parent container.
+*/
+[data-theme='dark'] .app-logo {
+  filter: brightness(0) invert(1);
+}
+
 .app-name {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: #111827;
-  letter-spacing: 0.2px;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+  font-family: 'Sora', system-ui, sans-serif;
 }
 
-/* Slight upscale on desktop */
-@media (min-width: 768px) {
-  .app-header {
-    height: 64px;
-  }
+.app-header-right {
+  position: absolute;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  .app-name {
-    font-size: 1rem;
-  }
+@media (min-width: 768px) {
+  .app-header { height: 64px; }
+  .app-name { font-size: 1rem; }
 }
