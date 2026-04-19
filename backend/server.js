@@ -31,7 +31,10 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: "*", // Allow EVERYTHING temporarily to test
+  credentials: true
+}));
 
 // 3. Manual Header Injection (The "Safety Net")
 // This ensures that even if a route fails, the CORS headers are sent.
